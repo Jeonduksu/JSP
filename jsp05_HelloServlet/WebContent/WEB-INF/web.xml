@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>jsp05_HelloServlet</display-name>
+  <welcome-file-list>
+    <welcome-file>home.html</welcome-file>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+  	<param-name>url</param-name>
+  	<param-value>www.naver.com</param-value>
+  </context-param>
+  
+  
+  
+    <!-- servlet에는 2가지가 필요하다
+   servlet-name
+   servlet-class 서블릿 클라스에는 패키지명+클라스명 
+   -->
+  <!-- mapping-->
+  	<servlet>
+  	<servlet-name>HelloServlet</servlet-name>
+  		<servlet-class>com.hello.controller.HelloController</servlet-class>
+  		  		  		
+  		<init-param>
+  			<param-name>id</param-name>
+  			<param-value>root</param-value>
+  		</init-param>
+  		
+  		<!-- 서버가 킬때 객체 실행 load-on-startup -->
+  		<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	
+  	<servlet-mapping>
+  		<servlet-name>HelloServlet</servlet-name>
+  		<url-pattern>/HelloServlet.do</url-pattern>
+  	</servlet-mapping>
+  	
+
+</web-app>
