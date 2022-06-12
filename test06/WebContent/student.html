@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	function getParam(){
+		let name = "name="+$("#name").val();
+		let kor = "kor="+$("#kor").val();
+		let eng = "eng="+$("#eng").val();
+		let math = "math="+$("#math").val();
+		return "?"+name+"&"+kor+"&"+eng+"&"+math;
+	}
+	
+	$(function(){
+		$("#process").click(function(){
+			$.ajax({
+				url:"CalScore"+getParam(),
+				dataType:"json",
+				success:function(msg){
+					alert(msg);
+					$("#res").html(msg.name+"의 총점은"+msg.sum+"이고,평균은"+msg.avg);
+				},
+				error:function(){
+					alert("실패 ㅠ");
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>성적 처리</h1>
+	이름 : <input type="text" id="name"><br>
+	국어 : <input type="text" id="kor"><br>
+	영어 : <input type="text" id="eng"><br>
+	수학 : <input type="text" id="math"><br>
+	<br>
+	
+	<input type="button" id="process" value="성적처리">
+	<br><br>
+	<div id="res"></div>
+</body>
+</html>
